@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# R
+.Rhistory
+.Rproj.user/
+
+# Data (do not commit Titanic CSVs)
+src/data/
+data/
+
+# Docker/Build
+*.egg-info/
+dist/
+build/
