@@ -46,17 +46,17 @@ titanic/
 ### Python Environment
 
 Dependencies are listed in requirements.txt:
-
+```
 pandas==2.2.2
 numpy==1.26.4
 scikit-learn==1.5.1
-
+```
 ### R Environment
 
 R dependencies are installed automatically through the install_packages.R script:
-
+```
 install.packages(c("tidyverse", "caret", "glmnet"), repos='https://cran.rstudio.com/')
-
+```
 ## Docker Setup
 
 Both Python and R pipelines are containerized for portability and consistent execution.
@@ -64,37 +64,37 @@ Both Python and R pipelines are containerized for portability and consistent exe
 ### Python Dockerfile
 
 Located at: src/python/Dockerfile
-
+```
 FROM python:3.11-slim
 WORKDIR /app
 COPY /requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 COPY /src/python /app/src/python
 CMD ["python", "src/python/titanic_pipeline.py"]
-
+```
 ### R Dockerfile
 
 Located at: src/r/Dockerfile
-
+```
 FROM r-base:4.3.1
 WORKDIR /app
 COPY /src/r /app/src/r
 RUN Rscript src/r/install_packages.R
 CMD ["Rscript", "src/r/titanic_pipeline.R"]
-
+```
 ## How to Run
 ### Python Pipeline
 
 Build the Docker image:
-
+```
 docker build -t titanic-py -f src/python/Dockerfile .
 
-
+```
 Run the container:
-
+```
 docker run --rm -v "$PWD/src/data":/app/src/data titanic-py
 
-
+```
 Output file:
 
 python_submission.csv
@@ -102,15 +102,15 @@ python_submission.csv
 ### R Pipeline
 
 Build the Docker image:
-
+```
 docker build -t titanic-r -f src/r/Dockerfile .
 
-
+```
 Run the container:
-
+```
 docker run --rm -v "$PWD/src/data":/app/src/data titanic-r
 
-
+```
 Output file:
 
 r_submission.csv
