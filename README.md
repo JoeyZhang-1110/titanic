@@ -18,6 +18,7 @@ train.csv
 Only train.csv and test.csv are required for this assignment.
 
 ## Project structure
+```
 titanic/
 │
 ├── README.md
@@ -40,7 +41,7 @@ titanic/
 │
 ├── python_submission.csv
 └── r_submission.csv
-
+```
 ## Environment Setup
 ### Python Environment
 
